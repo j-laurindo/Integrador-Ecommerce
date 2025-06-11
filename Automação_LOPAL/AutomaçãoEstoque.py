@@ -1,13 +1,10 @@
 import csv
-import pandas as pd
+import pandas as pd, openpyxl
 
 # Leitura dos dados CSV
-df = pd.read_csv("DadosEsp.csv", sep=",")
-tabela_html = df.to_html()
-
-with open('status.html', 'w') as f:
-    tabela = f.write(tabela_html)
-    print("Tabela HTML escrito com sucesso!")
+dados = pd.read_csv("DadosEsp.csv", sep=",")
+dados.to_excel('DadosEsp.xlsx', index=False)
+tabela_html = dados.to_html()
 
 #Criação da Página HTML
 pagina_html = f"""<html lang="pt-br">
@@ -18,7 +15,7 @@ pagina_html = f"""<html lang="pt-br">
     </head>
     <body>
         <h1>Status das Esteiras - Monitoramento de Estoque</h1>
-        <section>{tabela}</section>
+        <section>{tabela_html}</section>
     </body>
     </html>
 """
@@ -34,12 +31,3 @@ with open("status.html", "r", encoding="UTF-8") as f:
 
 
 
-"""
-with open("DadosEsp.csv", "r") as csvfile:
-    arquivo_csv = csv.reader(csvfile, delimiter=",")
-    for i, linha in enumerate(arquivo_csv):
-        if i == 0:
-            print(str(linha))
-        else:
-            print(str(linha))
-"""
