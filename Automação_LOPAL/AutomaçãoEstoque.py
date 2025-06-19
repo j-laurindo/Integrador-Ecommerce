@@ -1,12 +1,11 @@
 import csv
-import pandas as pd, openpyxl
+import pandas as pd
 
 # Leitura dos dados CSV
 dados = pd.read_csv("DadosEsp.csv", sep=",")
-dados.to_excel('DadosEsp.xlsx', index=False)
 tabela_html = dados.to_html()
 
-#Criação da Página HTML
+# Criação da Página HTML
 pagina_html = f"""<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -27,7 +26,5 @@ with open("status.html", "r", encoding="UTF-8") as f:
     conteudo_pagina = f.read()
     print(conteudo_pagina)
 
-
-
-
-
+# Criação do arquivo .xlsx
+dados.to_excel('DadosEsp.xlsx', index="False")

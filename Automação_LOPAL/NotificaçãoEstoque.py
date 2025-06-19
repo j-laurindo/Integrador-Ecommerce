@@ -42,11 +42,10 @@ corpo = f"""Siga abaixo as informações em tempo real do sistema de estoque:
 mensagem = MIMEText(corpo)
 mensagem['Subject'] = assunto
 mensagem['From'] = usuario
-mensagem['To'] = 'jlaurindo0104@gmail.com'
+mensagem['To'] = 'bernardisenzo09@gmail.com'
 
 # Enviando o email
 servidor.send_message(mensagem)
 
 # Fechando a conexão com o servidor
 servidor.quit()
- 
